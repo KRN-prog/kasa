@@ -1,7 +1,8 @@
+import React from 'react';
 import { useState, useEffect } from 'react'
 import CardLogements from '../components/CardLogements'
+import Footer from '../components/Footer'
 import '../utils/sass/index.scss';
-//import LogementsData from '../data/logements.json'
 
 function Home() {
     const [loading, setLoading] = useState(true)
@@ -25,21 +26,24 @@ function Home() {
         .catch((error) => console.log(error))
     }, [])
     return(
-        <section>
-            {loading ? (
-                <div>AAAA</div>
-            ) : (
-                <div className="section__articleContainer">
-                    {locations.map((location) => (
-                        <CardLogements
-                            key={location.id}
-                            picture={location.cover}
-                            title={location.title}
-                        />
-                    ))}
-                </div>
-            )}
-        </section>
+        <React.Fragment>
+            <section className='centerElements'>
+                {loading ? (
+                    <div className="lds-ripple"><div></div><div></div></div>
+                ) : (
+                    <div className="section__articleContainer">
+                        {locations.map((location) => (
+                            <CardLogements
+                                key={location.id}
+                                picture={location.cover}
+                                title={location.title}
+                            />
+                        ))}
+                    </div>
+                )}
+            </section>
+            <Footer />
+        </React.Fragment>
     )
 }
 
