@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import logoDark from '../assets/img/kasa_dark.png'
 
 function Footer() {

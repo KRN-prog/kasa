@@ -6,7 +6,7 @@ import '../utils/sass/index.scss';
 
 function Home() {
     const [loading, setLoading] = useState(true)
-    const [locations, setLocation] = useState([])
+    const [locations, setLocations] = useState([])
     useEffect(() => {
         fetch('http://127.0.0.1:5500/logements.json',{
           headers : { 
@@ -20,7 +20,7 @@ function Home() {
         })
         .then((data) => {
             console.log("===== JSON =====",data)
-            setLocation(data)
+            setLocations(data)
             setLoading(false)
         })
         .catch((error) => console.log(error))
@@ -35,6 +35,7 @@ function Home() {
                         {locations.map((location) => (
                             <CardLogements
                                 key={location.id}
+                                id={location.id}
                                 picture={location.cover}
                                 title={location.title}
                             />
