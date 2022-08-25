@@ -142,9 +142,12 @@ body{
     &__title{
         font-size: 36px;
         line-height: 142.6%;
-        margin-bottom: 10px;
+        margin-bottom: 0;
+        margin-top: 0;
     }
     &__location{
+        display: inline-block;
+        margin-bottom: 10px;
         font-size: 18px;
         line-height: 142.6%;
     }
@@ -161,9 +164,11 @@ body{
     justify-content: space-between;
     &__container{
         flex-basis: 45%;
+        margin-top: 10px;
         &__box{
             padding: 15px;
-            border-radius: 10px;
+            border-radius: 5px;
+            margin-top: -6px;
             &__heading{
                 margin: 0;
                 font-weight: 500;
@@ -172,8 +177,12 @@ body{
             }
         }
         &__box--h3{
+            display: flex;
+            justify-content: space-between;
             background: #FF6060;
             color: #fff;
+            z-index: 999;
+            position: relative;
         }
         &__box--desc{
             background: #F7F7F7;
@@ -183,6 +192,68 @@ body{
             line-height: 142.6%;
         }
     }
+}
+.logementPic{
+    position: relative;
+    color: #fff;
+    text-shadow: 2px 2px 2px #000;
+}
+.previousPic{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    & > img{
+        cursor: pointer;
+    }
+}
+.picCounter{
+    display: block;
+    position: absolute;
+    bottom: 10%;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+}
+.nextPic{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 15px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    & > img{
+        cursor: pointer;
+    }
+}
+.arrow{
+    width: 80%;
+    vertical-align: middle;
+}
+.tag{
+    display: inline-block;
+    // width: 115px;
+    // padding: 5px 0 5px 0;
+    padding: 5px 15px;
+    margin-right: 10px;
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 19.96px;
+    background: #FF6060;
+    color: #fff;
+    border-radius: 10px;
+    text-align: center;
+}
+.ulLogement{
+    padding: 0;
+    list-style: none;
+    font-size: 18px;
+    line-height: 25.67px;
+    font-weight: 400;
 }
 .footer{
     text-align: center;

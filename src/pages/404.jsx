@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import '../utils/sass/index.scss';
 
 function Error404() {
+    document.title = 'Kasa - 404';
     return(
         <section className='sectionError'>
             <h1 className='sectionError__error404'>404</h1>

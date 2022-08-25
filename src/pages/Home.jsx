@@ -5,6 +5,7 @@ import Footer from '../components/Footer'
 import '../utils/sass/index.scss';
 
 function Home() {
+    document.title = 'Kasa - Home';
     const [loading, setLoading] = useState(true)
     const [locations, setLocations] = useState([])
     useEffect(() => {

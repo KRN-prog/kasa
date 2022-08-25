@@ -1,10 +1,15 @@
 import React from 'react';
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import Equipment from '../components/Equipment'
 import Footer from '../components/Footer'
-import '../utils/sass/index.scss';
+import arrow from '../assets/img/arrow.png'
+import rightArrow from '../assets/img/rightArrow.png'
+import leftArrow from '../assets/img/leftArrow.png'
+import '../utils/sass/index.scss'
 
 function Logement() {
+    document.title = 'Kasa - Logement';
     const { idLogement } = useParams()
     const [loading, setLoading] = useState(true)
     const [location, setLocation] = useState([])
@@ -40,10 +45,11 @@ function Logement() {
             (
             <React.Fragment>
                 <section className='centerElements'>
-                    <article>
+                    <article className='logementPic'>
                         <img src={logement.pictures[picture]} alt="" className='imgsLogement' />
-                        <span onClick={() => {picture === 0 ? setPicture(logement.pictures.length - 1) : setPicture(picture - 1)}}>Précédent</span>
-                        <span onClick={() => {picture < logement.pictures.length - 1 ? setPicture(picture + 1) : setPicture(0)}}>Suivant</span>
+                        <div onClick={() => {picture === 0 ? setPicture(logement.pictures.length - 1) : setPicture(picture - 1)}} className='previousPic'><img src={leftArrow} alt="" /></div>
+                        <div className='picCounter'>{picture + 1} / {logement.pictures.length}</div>
+                        <div onClick={() => {picture < logement.pictures.length - 1 ? setPicture(picture + 1) : setPicture(0)}} className='nextPic'><img src={rightArrow} alt="" /></div>
                     </article>
                 </section>
                 <section className='centerElements redText logementInfo'>
@@ -51,7 +57,9 @@ function Logement() {
                         <h1 className='articleLogementInfo__title'>{logement.title}</h1>
                         <span className='articleLogementInfo__location'>{logement.location}</span>
                         <div>
-                            <span>{logement.tags.forEach((item) => item)}</span>
+                            {logement.tags.map((item, index) => (
+                                (<span key={index} className='tag'>{item}</span>)
+                            ))}
                         </div>
                     </article>
                     <article className='articleLogementInfo articleLogementInfo--user'>
@@ -62,20 +70,28 @@ function Logement() {
                 <section className='centerElements redText'>
                     <article className='articleLogementDesc'>
                         <div className='articleLogementDesc__container'>
-                            <div className='articleLogementDesc__container__box articleLogementDesc__container__box--h3'>
+                            <div className='articleLogementDesc__container__box articleLogementDesc__container__box--h3 list'>
                                 <h3 className='articleLogementDesc__container__box__heading'>Description</h3>
+                                <div>
+                                    <img src={arrow} alt="Arrow" className='arrow' />
+                                </div>
                             </div>
                             <div className='articleLogementDesc__container__box articleLogementDesc__container__box--desc'>
                                 <p>{logement.description}</p>
                             </div>
                         </div>
                         <div className='articleLogementDesc__container'>
-                            <div className='articleLogementDesc__container__box articleLogementDesc__container__box--h3'>
+                            <div className='articleLogementDesc__container__box articleLogementDesc__container__box--h3 list'>
                                 <h3 className='articleLogementDesc__container__box__heading'>Équipements</h3>
+                                <div>
+                                    <img src={arrow} alt="Arrow" className='arrow' />
+                                </div>
                             </div>
                             <div className='articleLogementDesc__container__box articleLogementDesc__container__box--desc'>
-                                <ul>
-                                    <li>{logement.equipments.forEach(item => {<span>{item}</span>})}</li>
+                                <ul className='ulLogement'>
+                                {logement.equipments.map((equipment, index) => (
+                                    <li key={index}>{equipment}</li>
+                                ))}
                                 </ul>
                             </div>
                         </div>
