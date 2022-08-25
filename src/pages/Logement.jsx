@@ -6,9 +6,10 @@ import '../utils/sass/index.scss';
 
 function Logement() {
     const { idLogement } = useParams()
-
     const [loading, setLoading] = useState(true)
     const [location, setLocation] = useState([])
+    const [picture, setPicture] = useState(0)
+
     useEffect(() => {
         fetch('http://127.0.0.1:5500/logements.json',{
           headers : { 
@@ -27,15 +28,66 @@ function Logement() {
         })
         .catch((error) => console.log(error))
     }, [])
-    for (let i = 0; i < location.length; i++) {
-        if (location[i].id === idLogement) {
-            console.log(location[i].id)
-            console.log(location[i].title)
-        }
-    }
+    
+    const logement = location.find(loc => loc.id === idLogement)
+    console.log(logement)
     return(
         <React.Fragment>
-            <span>L'id du logement est { idLogement }</span>
+            {loading ? (
+                <div className="lds-ripple"><div></div><div></div></div>
+            )
+            : logement ?
+            (
+            <React.Fragment>
+                <section className='centerElements'>
+                    <article>
+                        <img src={logement.pictures[picture]} alt="" className='imgsLogement' />
+                        <span onClick={() => {picture === 0 ? setPicture(logement.pictures.length - 1) : setPicture(picture - 1)}}>Précédent</span>
+                        <span onClick={() => {picture < logement.pictures.length - 1 ? setPicture(picture + 1) : setPicture(0)}}>Suivant</span>
+                    </article>
+                </section>
+                <section className='centerElements'>
+                    <article className='articleLogement'>
+                        <div>
+                            <h1>{logement.title}</h1>
+                            <span>{logement.location}</span>
+                            <div>
+                                <span>{logement.tags.forEach((item) => item)}</span>
+                            </div>
+                        </div>
+                        <div>
+                            <span className="articleLogement__hostName">{logement.host.name}</span>
+                            <img src={logement.host.picture} alt={logement.host.name} className="articleLogement__hostPicture" />
+                        </div>
+                    </article>
+                </section>
+                <section className='centerElements'>
+                    <article>
+                        <div>
+                            <div>
+                                <h3>Description</h3>
+                            </div>
+                            <div>
+                                <p>{logement.description}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <h3>Équipements</h3>
+                            </div>
+                            <div>
+                                <ul>
+                                    <li>{logement.equipments.forEach(item => {<span>{item}</span>})}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+            </React.Fragment>
+            )
+            :
+            (<span>Mince</span>)
+            }
             <Footer />
         </React.Fragment>
     )

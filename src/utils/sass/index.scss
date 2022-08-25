@@ -123,6 +123,20 @@ body{
         text-decoration: underline;
     }
 }
+.imgsLogement{
+    width: 100%;
+    height: 415px;
+    object-fit: cover;
+    border-radius: 25px;
+}
+.articleLogement{
+    &__hostPicture{
+        border-radius: 100px;
+        width: 64px;
+        vertical-align: middle;
+        margin-left: 10px;
+    }
+}
 .footer{
     text-align: center;
     padding: 35px;
