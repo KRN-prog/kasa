@@ -46,36 +46,34 @@ function Logement() {
                         <span onClick={() => {picture < logement.pictures.length - 1 ? setPicture(picture + 1) : setPicture(0)}}>Suivant</span>
                     </article>
                 </section>
-                <section className='centerElements'>
-                    <article className='articleLogement'>
+                <section className='centerElements redText logementInfo'>
+                    <article className='articleLogementInfo'>
+                        <h1 className='articleLogementInfo__title'>{logement.title}</h1>
+                        <span className='articleLogementInfo__location'>{logement.location}</span>
                         <div>
-                            <h1>{logement.title}</h1>
-                            <span>{logement.location}</span>
-                            <div>
-                                <span>{logement.tags.forEach((item) => item)}</span>
-                            </div>
-                        </div>
-                        <div>
-                            <span className="articleLogement__hostName">{logement.host.name}</span>
-                            <img src={logement.host.picture} alt={logement.host.name} className="articleLogement__hostPicture" />
+                            <span>{logement.tags.forEach((item) => item)}</span>
                         </div>
                     </article>
+                    <article className='articleLogementInfo articleLogementInfo--user'>
+                        <span className="articleLogementInfo__hostName">{logement.host.name}</span>
+                        <img src={logement.host.picture} alt={logement.host.name} className="articleLogementInfo__hostPicture" />
+                    </article>
                 </section>
-                <section className='centerElements'>
-                    <article>
-                        <div>
-                            <div>
-                                <h3>Description</h3>
+                <section className='centerElements redText'>
+                    <article className='articleLogementDesc'>
+                        <div className='articleLogementDesc__container'>
+                            <div className='articleLogementDesc__container__box articleLogementDesc__container__box--h3'>
+                                <h3 className='articleLogementDesc__container__box__heading'>Description</h3>
                             </div>
-                            <div>
+                            <div className='articleLogementDesc__container__box articleLogementDesc__container__box--desc'>
                                 <p>{logement.description}</p>
                             </div>
                         </div>
-                        <div>
-                            <div>
-                                <h3>Équipements</h3>
+                        <div className='articleLogementDesc__container'>
+                            <div className='articleLogementDesc__container__box articleLogementDesc__container__box--h3'>
+                                <h3 className='articleLogementDesc__container__box__heading'>Équipements</h3>
                             </div>
-                            <div>
+                            <div className='articleLogementDesc__container__box articleLogementDesc__container__box--desc'>
                                 <ul>
                                     <li>{logement.equipments.forEach(item => {<span>{item}</span>})}</li>
                                 </ul>

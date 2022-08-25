@@ -129,12 +129,59 @@ body{
     object-fit: cover;
     border-radius: 25px;
 }
-.articleLogement{
+.logementInfo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.articleLogementInfo{
+    flex-basis: 50%;
+    &--user{
+        text-align: end;
+    }
+    &__title{
+        font-size: 36px;
+        line-height: 142.6%;
+        margin-bottom: 10px;
+    }
+    &__location{
+        font-size: 18px;
+        line-height: 142.6%;
+    }
     &__hostPicture{
         border-radius: 100px;
         width: 64px;
         vertical-align: middle;
         margin-left: 10px;
+    }
+}
+.articleLogementDesc{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    &__container{
+        flex-basis: 45%;
+        &__box{
+            padding: 15px;
+            border-radius: 10px;
+            &__heading{
+                margin: 0;
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 142.6%;
+            }
+        }
+        &__box--h3{
+            background: #FF6060;
+            color: #fff;
+        }
+        &__box--desc{
+            background: #F7F7F7;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 142.6%;
+        }
     }
 }
 .footer{
