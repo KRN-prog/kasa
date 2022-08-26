@@ -1,5 +1,6 @@
 import React from 'react';
 import arrow from '../assets/img/arrow.png'
+import Footer from '../components/Footer'
 import '../utils/sass/index.scss'
 
 function About() {
@@ -69,6 +70,7 @@ function About() {
                     </div>
                 </article>
             </section>
+            <Footer />
         </React.Fragment>
     )
 }

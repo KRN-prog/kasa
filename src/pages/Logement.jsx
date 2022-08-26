@@ -1,11 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import Equipment from '../components/Equipment'
-import Footer from '../components/Footer'
+import StarsLogement from '../components/StarsLogement';
 import arrow from '../assets/img/arrow.png'
 import rightArrow from '../assets/img/rightArrow.png'
 import leftArrow from '../assets/img/leftArrow.png'
+import Footer from '../components/Footer'
 import '../utils/sass/index.scss'
 
 function Logement() {
@@ -14,6 +14,8 @@ function Logement() {
     const [loading, setLoading] = useState(true)
     const [location, setLocation] = useState([])
     const [picture, setPicture] = useState(0)
+    const [liste, setListe] = useState(false)
+    const eventListe = () => liste === false ? setListe(true) : setListe(false)
 
     useEffect(() => {
         fetch('http://127.0.0.1:5500/logements.json',{
@@ -57,14 +59,17 @@ function Logement() {
                         <h1 className='articleLogementInfo__title'>{logement.title}</h1>
                         <span className='articleLogementInfo__location'>{logement.location}</span>
                         <div>
-                            {logement.tags.map((item, index) => (
-                                (<span key={index} className='tag'>{item}</span>)
+                            {logement.tags.map((tag, tagIndex) => (
+                                (<span key={tagIndex} className='tag'>{tag}</span>)
                             ))}
                         </div>
                     </article>
                     <article className='articleLogementInfo articleLogementInfo--user'>
-                        <span className="articleLogementInfo__hostName">{logement.host.name}</span>
-                        <img src={logement.host.picture} alt={logement.host.name} className="articleLogementInfo__hostPicture" />
+                        <div>
+                            <span className="articleLogementInfo__hostName">{logement.host.name}</span>
+                            <img src={logement.host.picture} alt={logement.host.name} className="articleLogementInfo__hostPicture" />
+                        </div>
+                        <StarsLogement val={logement.rating} />
                     </article>
                 </section>
                 <section className='centerElements redText'>
@@ -73,12 +78,17 @@ function Logement() {
                             <div className='articleLogementDesc__container__box articleLogementDesc__container__box--h3 list'>
                                 <h3 className='articleLogementDesc__container__box__heading'>Description</h3>
                                 <div>
-                                    <img src={arrow} alt="Arrow" className='arrow' />
+                                    <img src={arrow} alt="Arrow" className='arrow' onClick={eventListe} />
                                 </div>
                             </div>
+                            {liste ?
+                            (
                             <div className='articleLogementDesc__container__box articleLogementDesc__container__box--desc'>
                                 <p>{logement.description}</p>
                             </div>
+                            )
+                            : null
+                            }
                         </div>
                         <div className='articleLogementDesc__container'>
                             <div className='articleLogementDesc__container__box articleLogementDesc__container__box--h3 list'>
@@ -87,13 +97,15 @@ function Logement() {
                                     <img src={arrow} alt="Arrow" className='arrow' />
                                 </div>
                             </div>
+                            {liste ? (
                             <div className='articleLogementDesc__container__box articleLogementDesc__container__box--desc'>
                                 <ul className='ulLogement'>
-                                {logement.equipments.map((equipment, index) => (
-                                    <li key={index}>{equipment}</li>
+                                {logement.equipments.map((equipment, equipmentIndex) => (
+                                    <li key={equipmentIndex}>{equipment}</li>
                                 ))}
                                 </ul>
                             </div>
+                            ) : null}
                         </div>
                     </article>
                 </section>

@@ -138,6 +138,9 @@ body{
     flex-basis: 50%;
     &--user{
         text-align: end;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
     &__title{
         font-size: 36px;
