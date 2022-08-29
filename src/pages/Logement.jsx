@@ -14,8 +14,8 @@ function Logement() {
     const [loading, setLoading] = useState(true)
     const [location, setLocation] = useState([])
     const [picture, setPicture] = useState(0)
-    const [liste, setListe] = useState(false)
-    const eventListe = () => liste === false ? setListe(true) : setListe(false)
+    const [description, setDescription] = useState(false)
+    const descriptionListe = () => description === false ? setDescription(true) : setDescription(false)
 
     useEffect(() => {
         fetch('http://127.0.0.1:5500/logements.json',{
@@ -38,6 +38,9 @@ function Logement() {
     
     const logement = location.find(loc => loc.id === idLogement)
     console.log(logement)
+    function element(prop) {
+        console.log(prop.target.parentNode.nextSibling)
+    }
     return(
         <React.Fragment>
             {loading ? (
@@ -78,10 +81,10 @@ function Logement() {
                             <div className='articleLogementDesc__container__box articleLogementDesc__container__box--h3 list'>
                                 <h3 className='articleLogementDesc__container__box__heading'>Description</h3>
                                 <div>
-                                    <img src={arrow} alt="Arrow" className='arrow' onClick={eventListe} />
+                                    <img src={arrow} alt="Arrow" className='arrow' onClick={(e) => element(e)} />
                                 </div>
                             </div>
-                            {liste ?
+                            {description ?
                             (
                             <div className='articleLogementDesc__container__box articleLogementDesc__container__box--desc'>
                                 <p>{logement.description}</p>
@@ -97,7 +100,7 @@ function Logement() {
                                     <img src={arrow} alt="Arrow" className='arrow' />
                                 </div>
                             </div>
-                            {liste ? (
+                            {description ? (
                             <div className='articleLogementDesc__container__box articleLogementDesc__container__box--desc'>
                                 <ul className='ulLogement'>
                                 {logement.equipments.map((equipment, equipmentIndex) => (
