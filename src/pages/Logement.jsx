@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import SliderLogement from '../components/SliderLogement';
 import StarsLogement from '../components/StarsLogement';
-import ListeDeoulante from '../components/ListeDeroulante';
+import ListeDeroulante from '../components/ListeDeroulante';
 import arrow from '../assets/img/arrow.png'
 import Footer from '../components/Footer'
 import '../utils/sass/index.scss'
@@ -69,7 +69,7 @@ function Logement() {
                             <div className='articleLogementDesc__container__box articleLogementDesc__container__box--h3 list'>
                                 <h3 className='articleLogementDesc__container__box__heading'>Description</h3>
                                 <div>
-                                    <img src={arrow} alt="Arrow" className='arrow' onClick={() => ListeDeoulante(description, setDescription)} />
+                                    <img src={arrow} alt="Arrow" className='arrow' onClick={(element) => ListeDeroulante(element, description, setDescription)} />
                                 </div>
                             </div>
                             {description ?
@@ -85,7 +85,7 @@ function Logement() {
                             <div className='articleLogementDesc__container__box articleLogementDesc__container__box--h3 list'>
                                 <h3 className='articleLogementDesc__container__box__heading'>Équipements</h3>
                                 <div>
-                                    <img src={arrow} alt="Arrow" className='arrow' onClick={() => ListeDeoulante(equipements, setEquipements)} />
+                                    <img src={arrow} alt="Arrow" className='arrow' onClick={(element) => ListeDeroulante(element, equipements, setEquipements)} />
                                 </div>
                             </div>
                             {equipements ? (

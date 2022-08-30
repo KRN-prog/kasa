@@ -1,7 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react'
+import TopImage from '../components/TopImage'
 import CardLogements from '../components/CardLogements'
 import Footer from '../components/Footer'
+import homePic from '../assets/img/home.png'
 import '../utils/sass/index.scss';
 
 function Home() {
@@ -28,6 +30,7 @@ function Home() {
     }, [])
     return(
         <React.Fragment>
+            <TopImage img={homePic} text="Chez vous, partout et ailleurs" />
             <section className='centerElements'>
                 {loading ? (
                     <div className="lds-ripple"><div></div><div></div></div>

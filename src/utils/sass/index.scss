@@ -77,6 +77,31 @@ body{
         font-size: 17px;
     }
 }
+.topImage{
+    margin: auto;
+    width: 95%;
+    position: relative;
+    &__img{
+        width: 100%;
+        height: 100%;
+        border-radius: 25px;
+    }
+    &__txt{
+        display: flex;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        justify-content: center;
+        align-items: center;
+        font-size: 48px;
+        font-weight: 500;
+        line-height: 68.45px;
+        color: #fff;
+        text-shadow: 1px 1px 1px #a6a6a6;
+    }
+}
 .section{
     &__articleContainer{
         background: #f7f7f7;
@@ -236,6 +261,7 @@ body{
 .arrow{
     width: 80%;
     vertical-align: middle;
+    transform: rotate(-180deg);
     cursor: pointer;
 }
 .tag{
@@ -258,6 +284,14 @@ body{
     font-size: 18px;
     line-height: 25.67px;
     font-weight: 400;
+}
+.flipArrow{
+    transform: rotate(0deg);
+    transition: all .3s ease;
+    &2{
+        transform: rotate(-180deg);
+        transition: all .3s ease;
+    }
 }
 .footer{
     text-align: center;
