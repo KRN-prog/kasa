@@ -305,10 +305,6 @@ body{
         margin-bottom: 20px;
     }
 }
-.star{
-    display: flex;
-    align-items: center;
-}
 
 @media screen and (max-width: 768px) {
     .logo{
@@ -344,6 +340,10 @@ body{
         &__picture{
             width: 100%;
         }
+    }
+    .star{
+        display: flex;
+        align-items: center;
     }
 
 
