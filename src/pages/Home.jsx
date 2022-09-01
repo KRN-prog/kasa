@@ -11,18 +11,16 @@ function Home() {
     const [loading, setLoading] = useState(true)
     const [locations, setLocations] = useState([])
     useEffect(() => {
-        fetch('http://127.0.0.1:5500/logements.json',{
+        fetch('http://localhost:3000/logements.json',{
           headers : { 
             'Content-Type': 'application/json',
             'Accept': 'application/json'
            }
         })
         .then((response) => {
-            console.log("===== RESPONSE =====",response)
             return response.json()
         })
         .then((data) => {
-            console.log("===== JSON =====",data)
             setLocations(data)
             setLoading(false)
         })

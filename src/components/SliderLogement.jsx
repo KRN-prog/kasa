@@ -1,8 +1,6 @@
 import rightArrow from '../assets/img/rightArrow.png'
 import leftArrow from '../assets/img/leftArrow.png'
 function SliderLogement(picture) {
-    console.log(picture)
-    //return <div>ee</div>
     return(
         <section className='centerElements'>
             <article className='logementPic'>

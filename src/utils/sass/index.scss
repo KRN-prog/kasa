@@ -73,6 +73,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;margin-bottom: 25px;
+    flex-wrap: wrap;
     &__link{
         font-size: 17px;
     }
@@ -302,5 +303,119 @@ body{
     &__img{
         width: 100px;
         margin-bottom: 20px;
+    }
+}
+.star{
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .logo{
+        width: 145px;
+        height: 47px;
+    }
+    .nav__link{
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 17.11px;
+    }
+
+    .topImage{
+        text-align: center;
+        &__img{
+            width: 90%;
+            height: 111px;
+            border-radius: 10px;
+        }
+        &__txt{
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 24px;
+            width: 90%;
+            margin-left: 15px;
+        }
+    }
+    .article{
+        width: 100%;
+        &__titleContainer > span{
+            font-size: 18px;
+        }
+        &__picture{
+            width: 100%;
+        }
+    }
+
+
+    .articleLogementInfo__title{
+        font-size: 18px;
+        font-weight: 500;
+        width: 90%;
+        line-height: 25.67px;
+    }
+    .articleLogementInfo__location{
+        font-size: 14px;
+        line-height: 19.96px;
+        font-weight: 500;
+    }
+    .tag{
+        font-size: 10px;
+        line-height: 14.26px;
+        font-weight: 500;
+    }
+    .articleLogementInfo__hostName{
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 17.11px;
+    }
+    .articleLogementDesc__container__box__heading{
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 18.54px;
+    }
+    .articleLogementInfo {
+        flex-basis: 100%;
+        flex-direction: row-reverse;
+        &--user{
+            margin-top: 15px;
+        }
+    }
+    .articleLogementDesc__container {
+        flex-basis: 100%;
+        margin-top: 10px;
+        margin-bottom: 25px;
+    }
+    .articleLogementDesc__container__box--desc > p{
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 17.11px;
+    }
+    .ulLogement{
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 17.11px;
+    }
+
+    .sectionError{
+        position: absolute;
+        top: 45%;
+        left: 0;
+        right: 0;
+        &__error404{
+            font-size: 96px;
+            line-height: 136.9px;
+            font-weight: 700;
+
+        }
+        &__msg{
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 25.67px;
+        }
+        &__link{
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 19.96px;
+        }
     }
 }

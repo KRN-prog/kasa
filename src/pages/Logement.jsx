@@ -6,6 +6,7 @@ import StarsLogement from '../components/StarsLogement';
 import ListeDeroulante from '../components/ListeDeroulante';
 import arrow from '../assets/img/arrow.png'
 import Footer from '../components/Footer'
+import Error404 from '../pages/404';
 import '../utils/sass/index.scss'
 
 function Logement() {
@@ -18,7 +19,7 @@ function Logement() {
     const [equipements, setEquipements] = useState(false)
 
     useEffect(() => {
-        fetch('http://127.0.0.1:5500/logements.json',{
+        fetch('http://localhost:3000/logements.json',{
           headers : { 
             'Content-Type': 'application/json',
             'Accept': 'application/json'
@@ -35,7 +36,6 @@ function Logement() {
     }, [])
     
     const logement = location.find(loc => loc.id === idLogement)
-    console.log(logement)
     return(
         <React.Fragment>
             {loading ? (
@@ -100,12 +100,12 @@ function Logement() {
                         </div>
                     </article>
                 </section>
+                <Footer />
             </React.Fragment>
             )
             :
-            (<span>Mince</span>)
+            (<Error404 />)
             }
-            <Footer />
         </React.Fragment>
     )
 }

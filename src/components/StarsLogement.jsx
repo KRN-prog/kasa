@@ -14,7 +14,7 @@ function StarsLogement(props) {
     let starDifferenceArr = []
     const difference = range.length - value
     return(
-        <div>
+        <div className="star">
         {range.map((range) =>
             value >= range ? <span key={`filled${range.toString()}`}><img src={filledStar} alt="étoile rempli" /></span> : null
         )}
